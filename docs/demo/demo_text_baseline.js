@@ -81,44 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./demoSrc/demo_text_style.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./demoSrc/demo_text_baseline.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./demoSrc/demo_text_style.js":
-/*!************************************!*\
-  !*** ./demoSrc/demo_text_style.js ***!
-  \************************************/
+/***/ "./demoSrc/demo_text_baseline.js":
+/*!***************************************!*\
+  !*** ./demoSrc/demo_text_baseline.js ***!
+  \***************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/pixi.es.js\");\n/* harmony import */ var _lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib */ \"./lib/index.js\");\n/* harmony import */ var _lib__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_lib__WEBPACK_IMPORTED_MODULE_1__);\n\n\n/**\n * DOMContentLoaded後の初期化処理。\n * デモに必要なパーツを一式初期化する。\n */\n\nconst onDomContentsLoaded = () => {\n  const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Application\"]({\n    width: 800,\n    height: 600\n  });\n  document.body.appendChild(app.view);\n  const field = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Text\"](\"test\", {\n    fill: \"#FF0\"\n  });\n  field.cacheAsBitmap = true;\n  app.stage.addChild(field);\n  _lib__WEBPACK_IMPORTED_MODULE_1__[\"PixiJSCacheUtil\"].updateText({\n    target: field,\n    style: {\n      fill: \"#F0F\",\n      fontSize: 24\n    }\n  });\n  field.text = \"new Text\";\n  setTimeout(() => {\n    console.log(\"Time!\");\n    _lib__WEBPACK_IMPORTED_MODULE_1__[\"PixiJSCacheUtil\"].updateText({\n      target: field,\n      text: \"new new Text\",\n      style: {\n        fill: \"#F00\",\n        fontSize: \"48px\"\n      }\n    });\n    console.log(field.text);\n  }, 1000);\n};\n/**\n * DOMContentLoaded以降に初期化処理を実行する\n */\n\n\nif (document.readyState !== \"loading\") {\n  onDomContentsLoaded();\n} else {\n  document.addEventListener(\"DOMContentLoaded\", onDomContentsLoaded);\n}\n\n//# sourceURL=webpack:///./demoSrc/demo_text_style.js?");
-
-/***/ }),
-
-/***/ "./lib/PixiJSCacheUtil.js":
-/*!********************************!*\
-  !*** ./lib/PixiJSCacheUtil.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar PixiJSCacheUtil =\n/** @class */\nfunction () {\n  function PixiJSCacheUtil() {}\n\n  PixiJSCacheUtil.updateText = function (param) {\n    if (param == null) return;\n    var isUpdate = false;\n\n    if (param.text && param.target.text !== param.text) {\n      param.target.text = param.text;\n      isUpdate = true;\n    }\n\n    var currentStyleID = param.target.style.styleID;\n    if (param.style === undefined) param.style = {};\n\n    for (var _i = 0, _a = Object.entries(param.style); _i < _a.length; _i++) {\n      var _b = _a[_i],\n          key = _b[0],\n          value = _b[1];\n      param.target.style[key] = value;\n    }\n\n    if (param.target.style.styleID !== currentStyleID) isUpdate = true;\n\n    if (isUpdate && param.target.cacheAsBitmap) {\n      param.target.cacheAsBitmap = false;\n      param.target.cacheAsBitmap = true;\n    }\n  };\n\n  return PixiJSCacheUtil;\n}();\n\nexports.PixiJSCacheUtil = PixiJSCacheUtil;\n\n//# sourceURL=webpack:///./lib/PixiJSCacheUtil.js?");
-
-/***/ }),
-
-/***/ "./lib/index.js":
-/*!**********************!*\
-  !*** ./lib/index.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nfunction __export(m) {\n  for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\n__export(__webpack_require__(/*! ./PixiJSCacheUtil */ \"./lib/PixiJSCacheUtil.js\"));\n\n//# sourceURL=webpack:///./lib/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/pixi.es.js\");\n\n/**\n * DOMContentLoaded後の初期化処理。\n * デモに必要なパーツを一式初期化する。\n */\n\nconst onDomContentsLoaded = () => {\n  const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Application\"]({\n    width: 800,\n    height: 600\n  });\n  document.body.appendChild(app.view);\n\n  const getTextField = () => {\n    const shiftField = (field, baseLinePoint) => {\n      const ascent = getAscent(field);\n      field.position.set(baseLinePoint.x, baseLinePoint.y - ascent);\n    };\n\n    const getAscent = field => {\n      const measured = pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"TextMetrics\"].measureText(field.text || \" \", field.style, field.style.wordWrap, field.canvas);\n      return measured.fontProperties.ascent;\n    };\n\n    const baseLinePoint = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Point\"](36, 48);\n    const field = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Text\"](\"testああ\", {\n      fill: \"#FF0\"\n    });\n    shiftField(field, baseLinePoint);\n    return field;\n  };\n\n  const field = getTextField();\n  app.stage.addChild(field);\n};\n/**\n * DOMContentLoaded以降に初期化処理を実行する\n */\n\n\nif (document.readyState !== \"loading\") {\n  onDomContentsLoaded();\n} else {\n  document.addEventListener(\"DOMContentLoaded\", onDomContentsLoaded);\n}\n\n//# sourceURL=webpack:///./demoSrc/demo_text_baseline.js?");
 
 /***/ }),
 
