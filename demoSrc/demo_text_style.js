@@ -1,5 +1,5 @@
 import { Application, Text } from "pixi.js";
-import { PixiJSCacheUtil } from "../bin";
+import { PixiJSCacheUtil } from "../lib";
 
 /**
  * DOMContentLoaded後の初期化処理。

@@ -1,9 +1,14 @@
 {
   "name": "pixijs-cache-util",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A module for caching and update bitmap text on change.",
-  "main": "./bin/index.js",
-  "types": "./bin/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./esm/index.js",
+  "files": [
+    "lib",
+    "esm"
+  ],
   "repository": "https://MasatoMakino@github.com/MasatoMakino/pixijs-cache-util.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
