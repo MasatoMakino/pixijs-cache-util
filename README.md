@@ -6,3 +6,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/85d47e9cb8aacb48c898/maintainability)](https://codeclimate.com/github/MasatoMakino/pixijs-cache-util/maintainability)
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=MasatoMakino&repo=pixijs-cache-util)](https://github.com/MasatoMakino/pixijs-cache-util)
+
+## Demo
+
+[Demo page](https://masatomakino.github.io/pixijs-cache-util/demo/)
+
+[API documents](https://masatomakino.github.io/pixijs-cache-util/api/)
