@@ -7,7 +7,7 @@ const { bundleDemo, watchDemo } = require("gulptask-demo-page").generateTasks({
 });
 
 const { tsc, tscClean, watchTsc } = require("gulptask-tsc").generateTasks({
-  projects: ["tsconfig.json", "tsconfig.esm.json"],
+  projects: ["tsconfig.cjs.json", "tsconfig.esm.json"],
 });
 
 const watchTasks = async () => {
