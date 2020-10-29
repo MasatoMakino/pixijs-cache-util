@@ -77,7 +77,7 @@ export class PixiJSCacheUtil {
     }
 
     const currentStyleID = param.target.style.styleID;
-    if (param.style === undefined) param.style = {};
+    param.style ??= {};
     for (let [key, value] of Object.entries(param.style)) {
       param.target.style[key] = value;
     }
