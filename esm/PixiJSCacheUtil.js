@@ -1,5 +1,12 @@
 export class PixiJSCacheUtil {
+    /**
+     * テキストを更新する。
+     * 更新内容が再描画を伴い、ビットマップキャッシュが有効な場合は、キャッシュも更新する。
+     *
+     * @param param
+     */
     static updateText(param) {
+        var _a;
         if (param == null)
             return;
         let isUpdate = false;
@@ -8,8 +15,7 @@ export class PixiJSCacheUtil {
             isUpdate = true;
         }
         const currentStyleID = param.target.style.styleID;
-        if (param.style === undefined)
-            param.style = {};
+        (_a = param.style) !== null && _a !== void 0 ? _a : (param.style = {});
         for (let [key, value] of Object.entries(param.style)) {
             param.target.style[key] = value;
         }
