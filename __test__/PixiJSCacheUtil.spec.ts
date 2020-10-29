@@ -1,0 +1,3 @@
+describe("PixiJSCacheUtil", () => {
+  test("init", () => {});
+});
