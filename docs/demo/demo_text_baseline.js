@@ -1,6 +1,6 @@
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
+ * This devtool is neither made for production nor for readable output files.
  * It uses "eval()" calls to create a separate source file in the browser devtools.
  * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
  * or disable the default devtool with "devtool: false".
@@ -14,9 +14,6 @@
 /*!***************************************!*\
   !*** ./demoSrc/demo_text_baseline.js ***!
   \***************************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/pixi.es.js\");\n\n/**\n * DOMContentLoaded後の初期化処理。\n * デモに必要なパーツを一式初期化する。\n */\n\nconst onDomContentsLoaded = () => {\n  const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({\n    width: 800,\n    height: 600\n  });\n  document.body.appendChild(app.view);\n\n  const getTextField = () => {\n    const shiftField = (field, baseLinePoint) => {\n      const ascent = getAscent(field);\n      field.position.set(baseLinePoint.x, baseLinePoint.y - ascent);\n    };\n\n    const getAscent = field => {\n      const measured = pixi_js__WEBPACK_IMPORTED_MODULE_0__.TextMetrics.measureText(field.text || \" \", field.style, field.style.wordWrap, field.canvas);\n      return measured.fontProperties.ascent;\n    };\n\n    const baseLinePoint = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Point(36, 48);\n    const field = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Text(\"testああ\", {\n      fill: \"#FF0\"\n    });\n    shiftField(field, baseLinePoint);\n    return field;\n  };\n\n  const field = getTextField();\n  app.stage.addChild(field);\n};\n/**\n * DOMContentLoaded以降に初期化処理を実行する\n */\n\n\nif (document.readyState !== \"loading\") {\n  onDomContentsLoaded();\n} else {\n  document.addEventListener(\"DOMContentLoaded\", onDomContentsLoaded);\n}\n\n//# sourceURL=webpack://pixijs-cache-util/./demoSrc/demo_text_baseline.js?");
@@ -54,14 +51,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
+/******/ 	// the startup function
+/******/ 	// It's empty as some runtime module handles the default behavior
+/******/ 	__webpack_require__.x = x => {};
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
 /******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
@@ -93,7 +93,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -140,43 +140,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /******/ 		
 /******/ 		// no HMR manifest
 /******/ 		
-/******/ 		var checkDeferredModules = () => {
-/******/ 		
-/******/ 		};
-/******/ 		function checkDeferredModulesImpl() {
-/******/ 			var result;
-/******/ 			for(var i = 0; i < deferredModules.length; i++) {
-/******/ 				var deferredModule = deferredModules[i];
-/******/ 				var fulfilled = true;
-/******/ 				for(var j = 1; j < deferredModule.length; j++) {
-/******/ 					var depId = deferredModule[j];
-/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferredModules.splice(i--, 1);
-/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
-/******/ 				}
-/******/ 			}
-/******/ 			if(deferredModules.length === 0) {
-/******/ 				__webpack_require__.x();
-/******/ 				__webpack_require__.x = () => {
-/******/ 		
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		}
-/******/ 		__webpack_require__.x = () => {
-/******/ 			// reset startup function so it can be called again when more startup code is added
-/******/ 			__webpack_require__.x = () => {
-/******/ 		
-/******/ 			}
-/******/ 			chunkLoadingGlobal = chunkLoadingGlobal.slice();
-/******/ 			for(var i = 0; i < chunkLoadingGlobal.length; i++) webpackJsonpCallback(chunkLoadingGlobal[i]);
-/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
-/******/ 		};
+/******/ 		var checkDeferredModules = x => {};
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (data) => {
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
@@ -194,7 +161,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /******/ 				}
 /******/ 			}
 /******/ 			if(runtime) runtime(__webpack_require__);
-/******/ 			parentChunkLoadingFunction(data);
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			while(resolves.length) {
 /******/ 				resolves.shift()();
 /******/ 			}
@@ -207,12 +174,41 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunkpixijs_cache_util"] = self["webpackChunkpixijs_cache_util"] || [];
-/******/ 		var parentChunkLoadingFunction = chunkLoadingGlobal.push.bind(chunkLoadingGlobal);
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback;
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 		
+/******/ 		function checkDeferredModulesImpl() {
+/******/ 			var result;
+/******/ 			for(var i = 0; i < deferredModules.length; i++) {
+/******/ 				var deferredModule = deferredModules[i];
+/******/ 				var fulfilled = true;
+/******/ 				for(var j = 1; j < deferredModule.length; j++) {
+/******/ 					var depId = deferredModule[j];
+/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferredModules.splice(i--, 1);
+/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 				}
+/******/ 			}
+/******/ 			if(deferredModules.length === 0) {
+/******/ 				__webpack_require__.x();
+/******/ 				__webpack_require__.x = x => {};
+/******/ 			}
+/******/ 			return result;
+/******/ 		}
+/******/ 		var startup = __webpack_require__.x;
+/******/ 		__webpack_require__.x = () => {
+/******/ 			// reset startup function so it can be called again when more startup code is added
+/******/ 			__webpack_require__.x = startup || (x => {});
+/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/
+/******/ 	
 /******/ 	// run startup
-/******/ 	return __webpack_require__.x();
+/******/ 	var __webpack_exports__ = __webpack_require__.x();
+/******/ 	
 /******/ })()
 ;

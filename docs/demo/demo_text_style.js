@@ -1,6 +1,6 @@
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
+ * This devtool is neither made for production nor for readable output files.
  * It uses "eval()" calls to create a separate source file in the browser devtools.
  * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
  * or disable the default devtool with "devtool: false".
@@ -14,9 +14,6 @@
 /*!************************************!*\
   !*** ./demoSrc/demo_text_style.js ***!
   \************************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/pixi.es.js\");\n/* harmony import */ var _lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib */ \"./lib/index.js\");\n/* harmony import */ var _lib__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_lib__WEBPACK_IMPORTED_MODULE_1__);\n\n\n/**\n * DOMContentLoaded後の初期化処理。\n * デモに必要なパーツを一式初期化する。\n */\n\nconst onDomContentsLoaded = () => {\n  const app = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Application({\n    width: 800,\n    height: 600\n  });\n  document.body.appendChild(app.view);\n  const field = new pixi_js__WEBPACK_IMPORTED_MODULE_0__.Text(\"test\", {\n    fill: \"#FF0\"\n  });\n  field.cacheAsBitmap = true;\n  app.stage.addChild(field);\n  _lib__WEBPACK_IMPORTED_MODULE_1__.PixiJSCacheUtil.updateText({\n    target: field,\n    style: {\n      fill: \"#F0F\",\n      fontSize: 24\n    }\n  });\n  field.text = \"new Text\";\n  setTimeout(() => {\n    console.log(\"Time!\");\n    _lib__WEBPACK_IMPORTED_MODULE_1__.PixiJSCacheUtil.updateText({\n      target: field,\n      text: \"new new Text\",\n      style: {\n        fill: \"#F00\",\n        fontSize: \"48px\"\n      }\n    });\n    console.log(field.text);\n  }, 1000);\n};\n/**\n * DOMContentLoaded以降に初期化処理を実行する\n */\n\n\nif (document.readyState !== \"loading\") {\n  onDomContentsLoaded();\n} else {\n  document.addEventListener(\"DOMContentLoaded\", onDomContentsLoaded);\n}\n\n//# sourceURL=webpack://pixijs-cache-util/./demoSrc/demo_text_style.js?");
@@ -27,11 +24,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /*!********************************!*\
   !*** ./lib/PixiJSCacheUtil.js ***!
   \********************************/
-/*! flagged exports */
-/*! export PixiJSCacheUtil [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__ */
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.PixiJSCacheUtil = void 0;\n\nvar PixiJSCacheUtil =\n/** @class */\nfunction () {\n  function PixiJSCacheUtil() {}\n  /**\n   * テキストを更新する。\n   * 更新内容が再描画を伴い、ビットマップキャッシュが有効な場合は、キャッシュも更新する。\n   *\n   * @param param\n   */\n\n\n  PixiJSCacheUtil.updateText = function (param) {\n    var _a;\n\n    if (param == null) return;\n    var isUpdate = false;\n\n    if (param.text && param.target.text !== param.text) {\n      param.target.text = param.text;\n      isUpdate = true;\n    }\n\n    var currentStyleID = param.target.style.styleID;\n    (_a = param.style) !== null && _a !== void 0 ? _a : param.style = {};\n\n    for (var _i = 0, _b = Object.entries(param.style); _i < _b.length; _i++) {\n      var _c = _b[_i],\n          key = _c[0],\n          value = _c[1];\n      param.target.style[key] = value;\n    }\n\n    if (param.target.style.styleID !== currentStyleID) isUpdate = true;\n\n    if (isUpdate && param.target.cacheAsBitmap) {\n      param.target.cacheAsBitmap = false;\n      param.target.cacheAsBitmap = true;\n    }\n  };\n\n  return PixiJSCacheUtil;\n}();\n\nexports.PixiJSCacheUtil = PixiJSCacheUtil;\n\n//# sourceURL=webpack://pixijs-cache-util/./lib/PixiJSCacheUtil.js?");
@@ -42,11 +34,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
 /*!**********************!*\
   !*** ./lib/index.js ***!
   \**********************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
-/*! CommonJS bailout: this is used directly at 3:22-26 */
-/*! CommonJS bailout: this is used directly at 16:19-23 */
-/*! CommonJS bailout: exports is used directly at 24:43-50 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  Object.defineProperty(o, k2, {\n    enumerable: true,\n    get: function () {\n      return m[k];\n    }\n  });\n} : function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  o[k2] = m[k];\n});\n\nvar __exportStar = this && this.__exportStar || function (m, exports) {\n  for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\n__exportStar(__webpack_require__(/*! ./PixiJSCacheUtil */ \"./lib/PixiJSCacheUtil.js\"), exports);\n\n//# sourceURL=webpack://pixijs-cache-util/./lib/index.js?");
@@ -84,14 +71,17 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
+/******/ 	// the startup function
+/******/ 	// It's empty as some runtime module handles the default behavior
+/******/ 	__webpack_require__.x = x => {};
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
 /******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
@@ -123,7 +113,7 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -170,43 +160,10 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 		
 /******/ 		// no HMR manifest
 /******/ 		
-/******/ 		var checkDeferredModules = () => {
-/******/ 		
-/******/ 		};
-/******/ 		function checkDeferredModulesImpl() {
-/******/ 			var result;
-/******/ 			for(var i = 0; i < deferredModules.length; i++) {
-/******/ 				var deferredModule = deferredModules[i];
-/******/ 				var fulfilled = true;
-/******/ 				for(var j = 1; j < deferredModule.length; j++) {
-/******/ 					var depId = deferredModule[j];
-/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferredModules.splice(i--, 1);
-/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
-/******/ 				}
-/******/ 			}
-/******/ 			if(deferredModules.length === 0) {
-/******/ 				__webpack_require__.x();
-/******/ 				__webpack_require__.x = () => {
-/******/ 		
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		}
-/******/ 		__webpack_require__.x = () => {
-/******/ 			// reset startup function so it can be called again when more startup code is added
-/******/ 			__webpack_require__.x = () => {
-/******/ 		
-/******/ 			}
-/******/ 			chunkLoadingGlobal = chunkLoadingGlobal.slice();
-/******/ 			for(var i = 0; i < chunkLoadingGlobal.length; i++) webpackJsonpCallback(chunkLoadingGlobal[i]);
-/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
-/******/ 		};
+/******/ 		var checkDeferredModules = x => {};
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (data) => {
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
@@ -224,7 +181,7 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 				}
 /******/ 			}
 /******/ 			if(runtime) runtime(__webpack_require__);
-/******/ 			parentChunkLoadingFunction(data);
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			while(resolves.length) {
 /******/ 				resolves.shift()();
 /******/ 			}
@@ -237,12 +194,41 @@ eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ?
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunkpixijs_cache_util"] = self["webpackChunkpixijs_cache_util"] || [];
-/******/ 		var parentChunkLoadingFunction = chunkLoadingGlobal.push.bind(chunkLoadingGlobal);
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback;
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 		
+/******/ 		function checkDeferredModulesImpl() {
+/******/ 			var result;
+/******/ 			for(var i = 0; i < deferredModules.length; i++) {
+/******/ 				var deferredModule = deferredModules[i];
+/******/ 				var fulfilled = true;
+/******/ 				for(var j = 1; j < deferredModule.length; j++) {
+/******/ 					var depId = deferredModule[j];
+/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferredModules.splice(i--, 1);
+/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 				}
+/******/ 			}
+/******/ 			if(deferredModules.length === 0) {
+/******/ 				__webpack_require__.x();
+/******/ 				__webpack_require__.x = x => {};
+/******/ 			}
+/******/ 			return result;
+/******/ 		}
+/******/ 		var startup = __webpack_require__.x;
+/******/ 		__webpack_require__.x = () => {
+/******/ 			// reset startup function so it can be called again when more startup code is added
+/******/ 			__webpack_require__.x = startup || (x => {});
+/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/
+/******/ 	
 /******/ 	// run startup
-/******/ 	return __webpack_require__.x();
+/******/ 	var __webpack_exports__ = __webpack_require__.x();
+/******/ 	
 /******/ })()
 ;
