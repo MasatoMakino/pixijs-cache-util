@@ -1,4 +1,5 @@
-import { Application, Text, TextMetrics, Point } from "pixi.js";
+import { Application, Point, Text } from "pixi.js";
+import { PixiJSCacheUtil } from "../lib";
 
 /**
  * DOMContentLoaded後の初期化処理。
@@ -9,24 +10,9 @@ const onDomContentsLoaded = () => {
   document.body.appendChild(app.view);
 
   const getTextField = () => {
-    const shiftField = (field, baseLinePoint) => {
-      const ascent = getAscent(field);
-      field.position.set(baseLinePoint.x, baseLinePoint.y - ascent);
-    };
-
-    const getAscent = field => {
-      const measured = TextMetrics.measureText(
-        field.text || " ",
-        field.style,
-        field.style.wordWrap,
-        field.canvas
-      );
-      return measured.fontProperties.ascent;
-    };
-
     const baseLinePoint = new Point(36, 48);
     const field = new Text("testああ", { fill: "#FF0" });
-    shiftField(field, baseLinePoint);
+    PixiJSCacheUtil.moveToBaselinePosition(field, baseLinePoint);
     return field;
   };
 

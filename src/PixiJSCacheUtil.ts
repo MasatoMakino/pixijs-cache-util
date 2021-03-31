@@ -1,4 +1,4 @@
-import { Text } from "pixi.js";
+import { Point, Text, TextMetrics } from "pixi.js";
 
 /**
  * テキストの更新方法を指定するオプション
@@ -87,5 +87,27 @@ export class PixiJSCacheUtil {
       param.target.cacheAsBitmap = false;
       param.target.cacheAsBitmap = true;
     }
+  }
+
+  /**
+   * フォントサイズを計測し、テキストフィールドをベースラインの位置に移動する。
+   *
+   * @param field
+   * @param baselinePosition
+   */
+  static moveToBaselinePosition(field: Text, baselinePosition: Point): void {
+    const getAscent = (field) => {
+      const sizingText = "あ｜　";
+      const measured: TextMetrics = TextMetrics.measureText(
+        sizingText,
+        field.style,
+        field.style.wordWrap,
+        field.canvas
+      );
+      return measured.fontProperties.ascent;
+    };
+
+    const ascent = getAscent(field);
+    field.position.set(baselinePosition.x, baselinePosition.y - ascent);
   }
 }
