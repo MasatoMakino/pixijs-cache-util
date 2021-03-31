@@ -1,3 +1,4 @@
+import { TextMetrics } from "pixi.js";
 export class PixiJSCacheUtil {
     /**
      * テキストを更新する。
@@ -25,5 +26,20 @@ export class PixiJSCacheUtil {
             param.target.cacheAsBitmap = false;
             param.target.cacheAsBitmap = true;
         }
+    }
+    /**
+     * フォントサイズを計測し、テキストフィールドをベースラインの位置に移動する。
+     *
+     * @param field
+     * @param baselinePosition
+     */
+    static moveToBaselinePosition(field, baselinePosition) {
+        const getAscent = (field) => {
+            const sizingText = "あ｜　";
+            const measured = TextMetrics.measureText(sizingText, field.style, field.style.wordWrap, field.canvas);
+            return measured.fontProperties.ascent;
+        };
+        const ascent = getAscent(field);
+        field.position.set(baselinePosition.x, baselinePosition.y - ascent);
     }
 }

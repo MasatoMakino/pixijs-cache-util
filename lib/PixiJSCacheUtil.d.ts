@@ -1,4 +1,4 @@
-import { Text } from "pixi.js";
+import { Point, Text } from "pixi.js";
 /**
  * テキストの更新方法を指定するオプション
  */
@@ -18,6 +18,7 @@ export interface TextUpdateParam {
 }
 /**
  * テキストの更新スタイル
+ *
  * It is based on [PIXI.TextStyle.constructor] option
  *
  * このオブジェクトはPIXI.TextStyleを継承しない。
@@ -65,5 +66,12 @@ export declare class PixiJSCacheUtil {
      * @param param
      */
     static updateText(param: TextUpdateParam): void;
+    /**
+     * フォントサイズを計測し、テキストフィールドをベースラインの位置に移動する。
+     *
+     * @param field
+     * @param baselinePosition
+     */
+    static moveToBaselinePosition(field: Text, baselinePosition: Point): void;
 }
 //# sourceMappingURL=PixiJSCacheUtil.d.ts.map
