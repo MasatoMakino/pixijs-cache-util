@@ -20,6 +20,7 @@ export interface TextUpdateParam {
 
 /**
  * テキストの更新スタイル
+ *
  * It is based on [PIXI.TextStyle.constructor] option
  *
  * このオブジェクトはPIXI.TextStyleを継承しない。
