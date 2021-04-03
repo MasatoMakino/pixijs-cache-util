@@ -1,3 +1,7 @@
+# This repository is archived.
+
+>The methods used in this module do not achieve the goal of increasing the performance of text rendering.
+
 # pixijs-cache-util
 
 > A module for caching and update bitmap text on change.
